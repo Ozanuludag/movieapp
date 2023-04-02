@@ -1,16 +1,19 @@
-import Header from '@/components/Header';
-import React from 'react'
-import './globals.css';
+import Header from "@/components/Header";
+import React from "react";
+import "./globals.css";
+import Providers from "./Providers";
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
-    <html lang='en'>
-        <body>
-            <Header />
-            {children}
-        </body>
+    <html lang="en">
+      <body>
+        <Providers>
+          <Header />
+          {children}
+        </Providers>
+      </body>
     </html>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

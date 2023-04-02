@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { BiSearch } from "react-icons/bi";
 import MenuItem from "./MenuItem";
@@ -14,13 +15,15 @@ const Header = () => {
     },
   ];
   return (
-    <div className="flex items-center gap-7 h-20">
-      <div className="bg-amber-600 rounded-lg p-3 text-2xl font-bold">
-        MovieApp
-      </div>
+    <div className="flex items-center gap-7 h-20 ml-3 mr-3">
+      <Link href={"/"}>
+        <div className="bg-amber-600 rounded-lg p-3 text-2xl font-bold">
+          MovieApp
+        </div>
+      </Link>
       <div className="flex flex-1 items-center gap-2 border p-3 rounded-lg">
         <input
-          className="outline-none flex-1"
+          className="outline-none flex-1 bg-transparent"
           type={"text"}
           placeholder="Arama yapınız"
         />
@@ -28,7 +31,7 @@ const Header = () => {
       </div>
       <ThemeComp />
       {menu.map((m, i) => (
-       <MenuItem item={m} index={i}/>
+        <MenuItem item={m} index={i} />
       ))}
     </div>
   );
