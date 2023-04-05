@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import Tabs from "@/components/Tabs";
 import React from "react";
 import "./globals.css";
 import Providers from "./Providers";
@@ -9,6 +10,7 @@ const Layout = ({ children }) => {
       <body>
         <Providers>
           <Header />
+          <Tabs />
           {children}
         </Providers>
       </body>
