@@ -1,9 +1,13 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import MenuItem from "./MenuItem";
 import ThemeComp from "./ThemeComp";
 const Header = () => {
+  const [keyword, setKeyword] = useState("");
+  const router = useRouter();
   const menu = [
     {
       name: "About",
@@ -14,6 +18,12 @@ const Header = () => {
       url: "/signin",
     },
   ];
+
+  const searchFunc = (e) => {
+    if (e.key === "Enter" && keyword.length >= 3) {
+      router.push(`/search/${keyword}`);
+    }
+  };
   return (
     <div className="flex items-center gap-7 h-20 ml-3 mr-3">
       <Link href={"/"}>
@@ -23,11 +33,16 @@ const Header = () => {
       </Link>
       <div className="flex flex-1 items-center gap-2 border p-3 rounded-lg">
         <input
+          onKeyDown={searchFunc}
+          onChange={(e) => setKeyword(e.target.value)}
           className="outline-none flex-1 bg-transparent"
           type={"text"}
           placeholder="Arama yapınız"
         />
-        <BiSearch size={25} />
+        <button onClick={() => router.push(`/search/${keyword}`)}>
+          {" "}
+          <BiSearch size={25} />
+        </button>
       </div>
       <ThemeComp />
       {menu.map((m, i) => (

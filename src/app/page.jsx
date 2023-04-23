@@ -5,7 +5,7 @@ const Page = async ({ searchParams }) => {
   const res = await fetch(
     `https://api.themoviedb.org/3/${
       searchParams.genre ? "movie/" + searchParams.genre : "trending/all/day"
-    }?api_key=049f1952807a11133d01f49f43af0d10&query=Jack+Reacher`,
+    }?api_key=049f1952807a11133d01f49f43af0d10`,
     { next: { revalidate: 1000 } }
   );
 
